@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+void main() {
+  runApp( MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Animasi Transisi',
+      home:MainScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Main Screen'),
+        backgroundColor: Colors.green,
+      ),
+      body: Center(
+        child: GestureDetector(
+          child: Hero(
+            tag: 'imageHero',
+            child: Image.network(
+              'http://www.udacoding.com/wp-content/uploads/2019/01/ngodingjeh-100x100.jpg',
+            ),
+          ),
+          onTap: (){
+            Navigator.push(context,MaterialPageRoute(builder: (_){
+              return DetailScreen();
+            }));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GestureDetector(
+        child: Center(
+          child: Hero(
+            tag: 'Image Hero',
+            child: Image.network(
+              'http://www.udacoding.com/wp-content/uploads/2019/01/ngodingjeh-768x960.jpg'
+            ),
+          ),
+        ),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+
+  }
+}

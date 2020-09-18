@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+void main() {
+  runApp( MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(title: "Toast",home:app2());
+  }
+}
+class app2 extends StatefulWidget {
+  @override
+  _app2State createState() => _app2State();
+}
+
+class _app2State extends State<app2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(title:Text("Toast"),),body:
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        RaisedButton(child:Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+
+              Icon(Icons.check),
+
+              SizedBox(
+                width: 12.0,
+                height: 10.0,
+              ),
+              Text("Klik untuk toast"),
+            ],
+          ),onPressed:() {
+            setState(() {
+              tampil();
+            });
+          }
+          ),
+      ],
+    ),
+
+    );
+  }
+  void tampil(){
+    Fluttertoast.showToast(
+        msg: "This is Center Short Toast",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+}
+}
